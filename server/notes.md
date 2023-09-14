@@ -11,10 +11,10 @@ You'll be responsible for:
 Start by generating a `Message` model and the necessary migration code to create
 messages with the following attributes:
 
-- [] "body": String.
-- [] "username": String.
-- [] "created_at": DateTime.
-- [] "updated_at": DateTime.
+- [x] "body": String.
+- [x] "username": String.
+- [x] "created_at": DateTime.
+- [x] "updated_at": DateTime.
 
 After creating the model and migrations, run the migrations and use the provided
 `seed.py` file to seed the database:
