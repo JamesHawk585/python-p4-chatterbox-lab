@@ -38,23 +38,25 @@ def messages():
 
         return response 
     
+    # Alt Shift down copies a line of code. 
+    # Form sytle submissions are seperate from json.
+    # Bryan Ashman - Piazza
     elif request.method == 'POST':
+        # request.get_json()
+    
         new_message = Message(
-            id = request.form.get("id"),
-            body = request.form.get("body"),
-            username = request.form.get("username")
+            body = request.json.get("body"),
+            username = request.json.get("username")
         )
-
         db.session.add(new_message)
         db.session.commit()
-
         message_dict = new_message.to_dict()
-
         response = make_response(
             message_dict,
             201
         )
 
+        
         return response
 
 # PATCH /messages/<int:id>: updates the body of the message using params, and returns the updated message as JSON.
@@ -65,18 +67,18 @@ def messages_by_id(id):
     
     if request.method == 'PATCH':
         message = Message.query.filter(Message.id == id).first()
-        for attr in request.form:
-            setattr(message, attr, request.form.get(attr))
-            db.session.add(message)
-            db.session.commit()
-            message_serialized = message.to_dict()
+        for attr in request.json:
+            setattr(message, attr, request.json.get(attr))
+        db.session.add(message)
+        db.session.commit()
+        message_serialized = message.to_dict()
 
-            response = make_response(
-                message_serialized,
-                200
-            )
+        response = make_response(
+            message_serialized,
+            200
+        )
 
-            return response
+        return response
         
     elif request.method == 'DELETE':
         message = Message.query.filter(Message.id == id).first()
@@ -91,7 +93,7 @@ def messages_by_id(id):
         response_body = make_response(
               response_body,
               200
-         )
+        )
         
         return response
          
