@@ -86,10 +86,10 @@ all the code set up so you can focus on building out your model and API routes.
 
 You'll be responsible for:
 
-- Creating a model and migrations.
-- Setting up the necessary routes to handle requests.
-- Performing CRUD actions with SQLAlchemy.
-- Sending the necessary JSON data in the responses.
+- [] Creating a model and migrations.
+- [] Setting up the necessary routes to handle requests.
+- [] Performing CRUD actions with SQLAlchemy.
+- [] Sending the necessary JSON data in the responses.
 
 ### Allowing Frontend Requests: CORS
 
